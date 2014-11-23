@@ -50,6 +50,8 @@ void sortStudentNames ( char ** pStudentNames, int studentsCount )
 
 void printStudentsWithIdenticalName ( char ** pStudentNames, int studentsCount )
 {	
+	sortStudentNames( pStudentNames, studentsCount );
+	
 	for ( int i = 0; i < studentsCount - 1; i++ )
 	{
 		if ( ! strcmp( pStudentNames[ i ], pStudentNames[ i + 1 ] ) )
@@ -61,7 +63,7 @@ void printStudentsWithIdenticalName ( char ** pStudentNames, int studentsCount )
 				++ i;
 				++ nIdentical;
 
-			} while ( ! strcmp( pIdenticalName, pStudentNames[ i + 1 ] ) );
+			} while ( ( i < studentsCount - 1) && ! strcmp( pIdenticalName, pStudentNames[ i + 1 ] ) );
 
 			printf( "There are %d students with name %s\n", nIdentical, pIdenticalName );
 		}
@@ -94,12 +96,6 @@ int main ()
 
 	char ** pStudentNames = new char * [ studentsCount ];
 	readStudentNames( pStudentNames, studentsCount );
-
-	printStudentsWithIdenticalName( pStudentNames, studentsCount );
-
-	printStudentNames( pStudentNames, studentsCount );
-
-	sortStudentNames( pStudentNames, studentsCount );
 
 	printStudentsWithIdenticalName( pStudentNames, studentsCount );
 
