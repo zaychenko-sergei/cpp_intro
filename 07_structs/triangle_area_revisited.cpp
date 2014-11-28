@@ -9,9 +9,11 @@ struct Point
 };
 
 
-void readPoint ( Point * pPoint )
+Point readPoint ()
 {
-	scanf( "%lf %lf", &( pPoint->x ), &( pPoint->y ) );
+	Point p;
+	scanf( "%lf %lf", &( p.x ), &( p.y ) );
+	return p;
 }
 
 
@@ -31,9 +33,9 @@ struct Triangle
 
 void readTriangle ( Triangle * pTriangle )
 {
-	readPoint( & ( pTriangle->p1 ) );
-	readPoint( & ( pTriangle->p2 ) );
-	readPoint( & ( pTriangle->p3 ) );
+	pTriangle->p1 = readPoint();
+	pTriangle->p2 = readPoint();
+	pTriangle->p3 = readPoint();
 }
 
 
